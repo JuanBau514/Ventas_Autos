@@ -284,3 +284,96 @@ header{
     border-radius: 0.5rem;
 }
 
+/* Section Reseñas */
+
+.contenedor-reseñas{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, auto));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.img-reseñas{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}
+
+.img-reseñas img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    border: 2px solid var(--main-color);
+}
+
+.contenedor-reseñas .caja-reseñas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 1px 4px 41px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+}
+
+.contenedor-reseñas .caja-reseñas h3{
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0.5rem 0 0.5rem;
+    color: var(--text-color);
+}
+
+.contenedor-reseñas .caja-reseñas p{
+   font-size: italic;
+}
+
+.contenedor-reseñas .caja-reseñas .estrellas .bx{
+   color: var(--main-color);
+}
+
+/* Section Contacto */
+
+.acerca-contenedor{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin-top: 2rem;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.acerca-img img{
+    width: 100%;
+}
+
+.acerca-text span {
+    color: var(--main-color);
+    font-weight: 500;
+    text-transform: uppercase;   
+}
+
+.acerca-text p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0 1.4rem;
+    color: var(--text-color);
+}
+
+.acerca-text .btn{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #474fa0;
+    color: #fff;
+    border-radius: 0.5rem;
+    font-weight: 500;
+}
+
+.acerca-text .btn:hover{
+    background-color: var(--main-color);
+    color: #ffffff;
+    border-radius: 0.5rem;
+}
