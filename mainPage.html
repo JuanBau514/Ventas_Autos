@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Concesionaria ABC </title>
 
-    <link rel="stylesheet" href="src/css/style.css"> > <!-- CSS -->
+    <link rel="stylesheet" href="src/css/mainPage.css"> > <!-- CSS -->
     <!-- Iconos -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 
@@ -14,24 +14,32 @@
 
 <body>
 
-    <header>
-        <a href="#" class="logo"> <img src="./src/Sources/img/jeep.png" alt="" > </a>
+<header>
 
-        <div class=" btn btn-menu" id="menu-iconos"> <i class='bx bx-menu'></i> </div>
+    <div id="barra-menu" class="barra bar-menu menu-icon">&#9776 </div>
+
+
+    <a href="#" class="logo"> <img src="./src/Sources/img/jeep.png" alt=""> </a>
+    
+    <div class="menu-container">
+
+        <div class="btn btn-menu" id="menu-iconos"> <i class='bx bx-menu'></i> </div>
 
         <ul class="navbar">
             <li> <a href="#home"> Home </a> </li>
-            <li> <a href="#servicios"> Servicios </a> </li>
+            <li> <a href="#service"> Servicios </a> </li>
             <li> <a href="#vehiculos"> Vehiculos </a> </li>
             <li> <a href="#reseñas"> Reseñas </a> </li>
             <li> <a href="#acerca"> Acerca </a> </li>
         </ul>
+    </div>
 
-        <div class="header-btn">
-            <a href="#" class="btn btn-inicio"> Iniciar Sesión </a>
-            <a href="#" class="btn btn-registrarse"> Registrarse </a>
-        </div>
-    </header>
+    <div class="header-btn">
+        <a href="#" class="btn btn-inicio"> Iniciar Sesión </a>
+        <a href="#" class="btn btn-registrarse"> Registrarse </a>
+    </div>
+</header>
+
 
     <!-- Seccion Home -->
     <section class="home" id="home">
@@ -74,7 +82,7 @@
 
     <!-- Seccion Vehiculos -->
 
-    <section class="vehiculos" id="vehiculos ">
+    <section class="vehiculos" id="vehiculos">
         
         <div class="tituloServicios">
             <span> Vehiculos disponibles  </span>
@@ -239,8 +247,8 @@
 
     </section>
 
-    <script src="js/main.js"> </script> <!-- JS -->
-
+  
+  <script src="src/js/mainResonsive.js"> </script> <!-- JS -->
 </body>
 
 </html>

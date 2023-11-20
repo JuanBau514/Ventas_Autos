@@ -109,6 +109,19 @@ header{
     border-radius: 0.5rem;
 }
 
+.header-btn .btn-registrarse{
+    background-color: var(--main-color);
+    color: #fff;
+    border-radius: 0.5rem;
+}
+
+.header-btn .btn-registrarse:hover{
+    background-color: var(--main-color);
+    color: #fcfcfc;
+    border-radius: 0.5rem;
+    border: 1px solid var(--main-color);
+}
+
 /* Home Section */
 
 .home{
@@ -158,6 +171,10 @@ header{
     background-color: var(--main-color);
     color: #000000;
     border-radius: 0.5rem;
+}
+
+.barra{
+    display: none;
 }
 
 /*  Section Serivicios */
@@ -376,4 +393,178 @@ header{
     background-color: var(--main-color);
     color: #ffffff;
     border-radius: 0.5rem;
+}
+
+/* Seccion Responsive de la pagina */
+
+@media (max-width:991px){
+
+    header{
+        padding: 18px 40px;
+    }
+
+    section{
+        padding: 50px 40px;
+    }
+}
+
+@media (max-width: 810px) {
+    .home {
+        background-position: left;
+    }
+
+    .form-container form {
+        bottom: 0.2rem;
+        left: 40px;
+    }
+
+    header {
+        padding: 11px 40px;
+    }
+
+    #menu-iconos {
+        display: initial;
+    }
+
+    .btn-inicio {
+        display: none;
+    }
+
+    .text h2 {
+        font-size: 2.5rem;
+    }
+
+    .home {
+        grid-template-columns: 1fr;
+    }
+
+    .form-container form {
+        position: unset;
+    }
+
+    .navbar {
+        position: absolute;
+        top: -500px;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+        transition: 0.2s ease;
+        text-align: left;
+        z-index: 1000; /* Asegúrate de que el menú aparezca sobre otros elementos */
+    }
+
+    .navbar.active {
+        top: 100%;
+    }
+
+    .navbar a {
+        padding: 1rem;
+        border-left: 2px solid var(--main-color);
+        margin: 1rem 0;
+        display: block;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .navbar a:hover {
+        background-color: var(--main-color);
+        border: none;
+        border-radius: 0.5rem;
+        color: #fff; /* Cambia el color del texto al hacer hover */
+        background-color: var(--main-color);
+    }
+
+    .navbar a::after {
+        content: '';
+        width: 0;
+        height: 3px;
+        background: var(--main-color);
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        transition: width 0.3s ease;
+    }
+
+    .navbar a:hover::after {
+        width: 100%;
+    }
+}
+
+@media (max-width:768px){
+
+    header{
+        padding: 11px 40 px;
+    }
+
+    #menu-iconos{
+        display: initial;
+    }
+
+    .btn-inicio{
+        display: none;
+    }
+
+    .text h2 {
+        font-size: 2.5rem;
+    }
+
+    .home{
+        grid-template-columns: 1fr;
+    }
+
+    .form-container form{
+        position: unset;
+    }
+
+     .navbar{
+        position: absolute;
+        top: -500px;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        box-shadow: 0 4px 4 px rgba(0, 0, 0, 0.1);
+        transition: 0.2s ease;
+        text-align: left;
+    }
+
+    .navbar.active{
+        top: 100%;
+    }
+
+    .navbar a {
+        padding: 1rem;
+        border-left: 2px solid var(--main-color);
+        margin: 1rem 0;
+        display: block;
+    }
+
+    .navbar a:hover {
+        background-color: var(--main-color);
+        border: none;
+        border-radius: 0.5rem;
+    }
+
+    .navbar a::after{
+        display: none;
+    }
+
+    .span{
+        display: block;
+        color: var(--text-color);
+    }
+    
+}
+
+@media (max-width: 450px){
+    .navbar a:hover {
+        background-color: var(--main-color);
+        border: none;
+        border-radius: 0.5rem;
+        color: #fff; /* Cambia el color del texto al hacer hover */
+        background-color: var(--main-color);
+    }
 }
