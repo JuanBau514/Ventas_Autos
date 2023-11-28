@@ -8,54 +8,59 @@ const pool = new Pool({
     port: '5432'
 });
 
-const getCliente = async (req, res) => {
-    const response = await pool.query('SELECT * FROM cliente');
+const getVenta = async (req, res) => {
+    const response = await pool.query('SELECT * FROM venta');
     console.log(response.rows);
     res.status(200).json(response.rows);
 }
 
-const createCliente = async (req, res) => {
-    const {id_cliente, nombre, ciudad, id_sucursal, fecha} = req.body;
+const createVenta = async (req, res) => {
+    const {id_venta, fecha_venta, valor, estado, metodo_pago, id_emp, no_chasis, id_cliente} = req.body;
 
-    const response = await pool.query('INSERT INTO cliente (id_cliente, nombre, ciudad, id_sucursal, fecha) VALUES ($1, $2, $3, $4, $5)', [id_cliente, nombre, ciudad, id_sucursal, fecha]);
+    const FechaVen = new Date (fecha_venta);
+
+    const response = await pool.query('INSERT INTO venta (id_venta, fecha_venta, valor, estado, metodo_pago, id_emp, no_chasis, id_cliente) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [id_venta, FechaVen, valor, estado, metodo_pago, id_emp, no_chasis, id_cliente]);
     console.log(response);
     res.json ({
-        message: "Cliente agregado exitosamente",
+        message: "Venta agregada exitosamente",
         body: {
-            sucursal: {id_cliente, nombre, ciudad, id_sucursal, fecha}
+            sucursal: {id_venta, FechaVen, valor, estado, metodo_pago, id_emp, no_chasis, id_cliente}
         }
     })
 }
 
-const updateCliente = async (req, res) => {
+const updateVenta = async (req, res) => {
     const id = req.params.id;
-    const { id_cliente, nombre, ciudad, id_sucursal, fecha } = req.body;
+    const {id_venta, fecha_venta, valor, estado, metodo_pago, id_emp, no_chasis, id_cliente} = req.body;
+
+    const FechaVen = new Date (fecha_venta);
+
     const response = await pool.query(
-        'UPDATE cliente SET id_cliente = $1, nombre = $2, ciudad = $3, id_sucursal = $4, fecha = $5 WHERE id_cliente = $6',
-        [id_cliente, nombre, ciudad, id_sucursal, fecha, id]
+        'UPDATE venta SET id_venta = $1, fecha_venta = $2, valor = $3, estado = $4, metodo_pago = $5, id_emp = $6, no_chasis =$7, id_cliente = $8 WHERE id_venta = $9',
+        [id_venta, FechaVen, valor, estado, metodo_pago, id_emp, no_chasis, id_cliente, id]
     );
     console.log(response);
-    res.send('Cliente Actualizado');
+    res.send('Venta Actualizada');
 }
 
 
-const deleteCliente = async (req, res) => {
+const deleteVenta = async (req, res) => {
     const id = req.params.id
-    const response = await pool.query('DELETE FROM cliente WHERE id_cliente = $1', [id]);
+    const response = await pool.query('DELETE FROM venta WHERE id_venta = $1', [id]);
     console.log(response);
-    res.json('Cliente eliminado con exito');
+    res.json('Venta eliminada con exito');
 }
 
-const getClienteById = async (req, res) => {
+const getVentaById = async (req, res) => {
     const id = req.params.id;
-    const response = await pool.query('SELECT * FROM cliente WHERE id_cliente = $1', [id]);
+    const response = await pool.query('SELECT * FROM venta WHERE id_venta = $1', [id]);
     res.json(response.rows);
 }
 
 module.exports= {
-    getCliente,
-    getClienteById,
-    updateCliente,
-    createCliente,
-    deleteCliente
+    getVenta,
+    getVentaById,
+    updateVenta,
+    createVenta,
+    deleteVenta
 }

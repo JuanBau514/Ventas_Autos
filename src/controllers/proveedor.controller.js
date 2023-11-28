@@ -8,54 +8,54 @@ const pool = new Pool({
     port: '5432'
 });
 
-const getCliente = async (req, res) => {
-    const response = await pool.query('SELECT * FROM cliente');
+const getProveedor = async (req, res) => {
+    const response = await pool.query('SELECT * FROM proveedor');
     console.log(response.rows);
     res.status(200).json(response.rows);
 }
 
-const createCliente = async (req, res) => {
-    const {id_cliente, nombre, ciudad, id_sucursal, fecha} = req.body;
+const createProveedor = async (req, res) => {
+    const {id_proveedor, nombre, telefono} = req.body;
 
-    const response = await pool.query('INSERT INTO cliente (id_cliente, nombre, ciudad, id_sucursal, fecha) VALUES ($1, $2, $3, $4, $5)', [id_cliente, nombre, ciudad, id_sucursal, fecha]);
+    const response = await pool.query('INSERT INTO proveedor (id_proveedor, nombre, telefono) VALUES ($1, $2, $3)', [id_proveedor, nombre, telefono]);
     console.log(response);
     res.json ({
-        message: "Cliente agregado exitosamente",
+        message: "Proveedor agregado exitosamente",
         body: {
-            sucursal: {id_cliente, nombre, ciudad, id_sucursal, fecha}
+            sucursal: {id_proveedor, nombre, telefono}
         }
     })
 }
 
-const updateCliente = async (req, res) => {
+const updateProveedor = async (req, res) => {
     const id = req.params.id;
-    const { id_cliente, nombre, ciudad, id_sucursal, fecha } = req.body;
+    const { id_proveedor, nombre, telefono } = req.body;
     const response = await pool.query(
-        'UPDATE cliente SET id_cliente = $1, nombre = $2, ciudad = $3, id_sucursal = $4, fecha = $5 WHERE id_cliente = $6',
-        [id_cliente, nombre, ciudad, id_sucursal, fecha, id]
+        'UPDATE proveedor SET id_proveedor = $1, nombre = $2, telefono =$3 WHERE id_proveedor = $4',
+        [id_proveedor, nombre, telefono, id]
     );
     console.log(response);
-    res.send('Cliente Actualizado');
+    res.send('Proveedor Actualizado');
 }
 
 
-const deleteCliente = async (req, res) => {
+const deleteProveedor = async (req, res) => {
     const id = req.params.id
-    const response = await pool.query('DELETE FROM cliente WHERE id_cliente = $1', [id]);
+    const response = await pool.query('DELETE FROM proveedor WHERE id_proveedor = $1', [id]);
     console.log(response);
-    res.json('Cliente eliminado con exito');
+    res.json('Proveedor eliminado con exito');
 }
 
-const getClienteById = async (req, res) => {
+const getProveedorById = async (req, res) => {
     const id = req.params.id;
-    const response = await pool.query('SELECT * FROM cliente WHERE id_cliente = $1', [id]);
+    const response = await pool.query('SELECT * FROM proveedor WHERE id_proveedor = $1', [id]);
     res.json(response.rows);
 }
 
 module.exports= {
-    getCliente,
-    getClienteById,
-    updateCliente,
-    createCliente,
-    deleteCliente
+    getProveedor,
+    getProveedorById,
+    updateProveedor,
+    createProveedor,
+    deleteProveedor
 }
